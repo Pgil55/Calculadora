@@ -36,6 +36,7 @@ export class CalculadoraComponent {
 
   public borrar(){
     this.nombre = '';
+    this.sexo='no binario'
     this.altura=150
     this.peso=50
   }
@@ -63,6 +64,7 @@ export class CalculadoraComponent {
       respuestaFinal = respuestaFinal + respuesta;
       this.historial.push(respuestaFinal);
     }
+    return this.borrar()
     console.log(this.historial);
 
   }
