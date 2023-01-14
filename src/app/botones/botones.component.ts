@@ -6,6 +6,6 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./botones.component.css']
 })
 export class BotonesComponent {
-@Input() color:string='';
-@Input() texto:string='';
+  @Input() color: string = '';
+  @Input() texto: string = '';
 }
