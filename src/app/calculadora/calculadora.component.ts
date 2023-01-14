@@ -6,23 +6,24 @@ import { AltYpesoComponent } from '../alt-ypeso/alt-ypeso.component';
   styleUrls: ['./calculadora.component.css']
 })
 export class CalculadoraComponent {
-  @Input() altura:number=0;
-  @Input() peso:number=0;
+  imc:number;
+  @Input() altura:number=150;
+  @Input() peso:number=50;
   @Input() nombre:string='';
-  @Input() hombre:string='hombre';
-  @Input() mujer:string='Mujer';
+  @Input() sexo:string='no binario';
+  historial: string[] = [];
 
   
   public addClick(){
-    alert ('Felicidades has elejido ' + this.hombre)
-    this.hombre
-    console.log(this.hombre)
+
+    this.sexo='hombre';
+    console.log(this.sexo)
     
   }
   public addClick2(){
-    alert ('Felicidades has elejido' + this.mujer)
-    this.mujer
-    console.log(this.mujer)
+  
+    this.sexo='mujer';
+    console.log(this.sexo)
   }
 
   public asignarAltura($altura: number): void {
@@ -35,10 +36,39 @@ export class CalculadoraComponent {
 
   public borrar(){
     this.nombre = '';
-    this.altura=0
-    this.peso=0
+    this.altura=150
+    this.peso=50
+  }
+
+  public calculo(){
+    this.imc = this.peso / ((this.altura/100) * (this.altura/100) );
+    let respuestaFinal:string='Hola '+ this.nombre + ' eres un@ '+ this.sexo + ' y   ';
+    console.log(this.imc);
+
+    let respuesta:string=''
+    if (this.imc <18.5) {
+      respuesta='estas muy delgado';
+      respuestaFinal = respuestaFinal + respuesta;
+      this.historial.push(respuestaFinal);
+    } else if(this.imc <=24.9){
+      respuesta='estas en tu peso ideal';
+      respuestaFinal = respuestaFinal + respuesta;
+      this.historial.push(respuestaFinal);
+    }else if(this.imc >24.9 && this.imc <= 29.9){
+      respuesta='estas un poco por encima de tu peso';
+      respuestaFinal = respuestaFinal + respuesta;
+      this.historial.push(respuestaFinal);
+    }else if(this.imc >30.0 ){
+      respuesta='estas como una vaca, y calladita shuuuuuuuuuuuu(por Xhokas)';
+      respuestaFinal = respuestaFinal + respuesta;
+      this.historial.push(respuestaFinal);
+    }
+    console.log(this.historial);
+
   }
 }
+
+
 
 
 

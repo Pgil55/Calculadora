@@ -1,12 +1,24 @@
+<div style="flex-direction: column;">
+<div>
 <form > 
     <input type="text" name="nombre" [(ngModel)]="nombre"><br>
 
     <botones texto="Hombre" color="yellow" (click)="addClick()"></botones>
     <botones texto="Mujer" color="blue" (click)="addClick2()"></botones>
+    <p>Felicidades, has elegido ser {{sexo}}</p>
     <br>
     <alt-ypeso [altu]="altura" [pess]="peso" (eventoAltura)="asignarAltura($event)" (eventoPeso)="asignarPeso($event)"></alt-ypeso>
     <br>
     <botones texto="Borrar" color="red" (click)="borrar()"> Borrar</botones>
-    <botones texto="adelante" color="green"></botones>
+    <botones texto="adelante" color="green" (click)="calculo()"></botones>
 </form>
+</div>
+<div>
 <h2>Historial</h2>
+<ul>
+    <li *ngFor="let respuesta of historial">
+        <p>{{respuesta}}</p>
+    </li>
+</ul>
+</div>
+</div>
